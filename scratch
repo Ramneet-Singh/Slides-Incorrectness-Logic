@@ -1,0 +1,9 @@
+Last iteration has the error. We don't know at the time of proof how many iterations we need to unroll. We just know that there exists some number n of iterations such that the n-th iteration causes the error. In such a case, we cannot construct the proof if we use C ; C^*  instead of C^* ; C.
+
+y = nondet(); ( ( assume(y >= N); error() ) + ( y = y + 1 ) )^*
+
+[ \exists m . y==m ] ( ( assume(y >= N); error() ) + ( y = y + 1 ) )^* [ er: \exists n . \exists m . ( y==N /\ N==(m+n)  /\ nat(n) ) ]
+
+[ \exists m. y==m ] ( ( assume(y >= N); error() ) + ( y = y + 1 ) )^* [ ok: \exists n . \exists m . ( y==m+n /\ nat(n) ) ]
+
+[ y == N ] ( ( assume(y >= N); error() ) + ( y = y + 1 ) ) [ er: y == N ]
